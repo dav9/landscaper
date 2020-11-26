@@ -1,0 +1,7 @@
+{
+	"auths": {
+		"h.ingress.t.cp-k8s.shoot.canary.k8s-hana.ondemand.com": {
+			"auth": "YWRtaW46SGFyYm9yMTIzNDU="
+		}
+	}
+}

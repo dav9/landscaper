@@ -13,6 +13,7 @@ require (
 	github.com/gardener/component-spec/bindings-go v0.0.0-20201104172910-f8dcb4c2977e
 	github.com/go-logr/logr v0.1.0
 	github.com/go-logr/zapr v0.1.1
+	github.com/gofrs/flock v0.7.1
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/mock v1.2.0
 	github.com/golang/protobuf v1.4.0 // indirect
@@ -42,12 +43,14 @@ require (
 	golang.org/x/tools v0.0.0-20201002184944-ecd9fd270d5d // indirect
 	gomodules.xyz/jsonpatch/v2 v2.1.0 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
+	gopkg.in/yaml.v2 v2.3.0
 	helm.sh/helm/v3 v3.2.4
 	k8s.io/api v0.18.2
 	k8s.io/apimachinery v0.18.6
 	k8s.io/client-go v0.18.2
 	k8s.io/code-generator v0.18.2
 	k8s.io/gengo v0.0.0-20200413195148-3a45101e95ac // indirect
+	k8s.io/kubectl v0.18.0
 	k8s.io/utils v0.0.0-20200414100711-2df71ebbae66
 	rsc.io/letsencrypt v0.0.3 // indirect
 	sigs.k8s.io/controller-runtime v0.6.0
