@@ -20,41 +20,41 @@ func NewTestCommand(ctx context.Context, opts *qsOptions) *cobra.Command {
 		Aliases: []string{"t"},
 		Short:   "test",
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			// if err = execute("helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx"); err != nil {
-			// 	return
-			// }
+			if err = execute("helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx"); err != nil {
+				return
+			}
 
-			// if err = execute("helm repo update"); err != nil {
-			// 	return
-			// }
+			if err = execute("helm repo update"); err != nil {
+				return
+			}
 
-			// if err = os.RemoveAll("/tmp/ingress-nginx"); err != nil {
-			// 	return
-			// }
+			if err = os.RemoveAll("/tmp/ingress-nginx"); err != nil {
+				return
+			}
 
-			// if err = execute("helm pull ingress-nginx/ingress-nginx --untar --destination /tmp"); err != nil {
-			// 	return
-			// }
+			if err = execute("helm pull ingress-nginx/ingress-nginx --untar --destination /tmp"); err != nil {
+				return
+			}
 
-			// if err = execute(fmt.Sprintf("helm chart save /tmp/ingress-nginx %s/library/charts/ingress-nginx:0.0.1", opts.repo.host)); err != nil {
-			// 	return
-			// }
+			if err = execute(fmt.Sprintf("helm chart save /tmp/ingress-nginx %s/library/charts/ingress-nginx:0.0.1", opts.repo.host)); err != nil {
+				return
+			}
 			
-			// if err = execute(fmt.Sprintf("helm registry login -u %s -p %s %s --kubeconfig %s", opts.repo.username, opts.repo.password, opts.repo.host, opts.kubeconfig)); err != nil {
-			// 	return
-			// }
+			if err = execute(fmt.Sprintf("helm registry login -u %s -p %s %s --kubeconfig %s", opts.repo.username, opts.repo.password, opts.repo.host, opts.kubeconfig)); err != nil {
+				return
+			}
 			
-			// if err = execute(fmt.Sprintf("helm chart push %s/library/charts/ingress-nginx:0.0.1", opts.repo.host)); err != nil {
-			// 	return
-			// }
+			if err = execute(fmt.Sprintf("helm chart push %s/library/charts/ingress-nginx:0.0.1", opts.repo.host)); err != nil {
+				return
+			}
 			
-			// if err = execute(fmt.Sprintf("docker login -u %s -p %s %s", opts.repo.username, opts.repo.password, opts.repo.host)); err != nil {
-			// 	return
-			// }
+			if err = execute(fmt.Sprintf("docker login -u %s -p %s %s", opts.repo.username, opts.repo.password, opts.repo.host)); err != nil {
+				return
+			}
 			
-			// if err = execute(fmt.Sprintf("landscaper-cli blueprints push %s/library/charts/ingress-nginx-blueprint:0.0.1 definition/blueprint", opts.repo.host)); err != nil {
-			// 	return
-			// }
+			if err = execute(fmt.Sprintf("landscaper-cli blueprints push %s/library/charts/ingress-nginx-blueprint:0.0.1 definition/blueprint", opts.repo.host)); err != nil {
+				return
+			}
 			
 			path, err := os.Getwd()
 			if err != nil {
