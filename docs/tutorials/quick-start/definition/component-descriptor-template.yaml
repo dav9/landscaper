@@ -1,0 +1,31 @@
+meta:
+  schemaVersion: v2
+
+component:
+  name: github.com/gardener/landscaper/ingress-nginx
+  version: 0.0.1
+
+  provider: internal
+
+  repositoryContexts:
+  - type: ociRegistry
+    baseUrl: {{ .BaseURL }}
+
+  sources: [ ]
+  componentReferences: [ ]
+
+  resources:
+  - type: blueprint
+    name: ingress-nginx-blueprint
+    version: 0.0.1
+    relation: local
+    access:
+      type: ociRegistry
+      imageReference: {{ .BaseURL }}/ingress-nginx-blueprint:0.0.1
+  - type: helm
+    name: ingress-nginx-chart
+    version: 0.0.1
+    relation: external
+    access:
+      type: ociRegistry
+      imageReference: {{ .BaseURL }}/ingress-nginx:0.0.1

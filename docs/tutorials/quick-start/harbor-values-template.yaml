@@ -1,0 +1,24 @@
+# values.yaml
+
+externalURL: https://{{ .HarborCoreURL }}
+
+chartmuseum:
+  enabled: false
+clair:
+  enabled: false
+trivy:
+  enabled: false
+notary:
+  enabled: false
+expose:
+  tls:
+    certSource: secret
+    secret: 
+      secretName: harbor-tls-secret
+  ingress:
+    annotations: 
+      dns.gardener.cloud/class: garden
+      dns.gardener.cloud/dnsnames: {{ .HarborCoreURL }}
+      cert.gardener.cloud/purpose: managed
+    hosts:
+      core: {{ .HarborCoreURL }}

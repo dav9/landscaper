@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2020 SAP SE or an SAP affiliate company and Gardener contributors
+#
+# SPDX-License-Identifier: Apache-2.0
+
+# Default values for landscaper.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+landscaper:
+  registryConfig: # contains optional oci secrets
+    blueprints:
+      allowPlainHttpRegistries: false
+      secrets: 
+        default: 
+          auths:
+            "{{ .HarborCoreURL }}":
+              auth: "{{ .HarborAuth }}"
+    components:
+      allowPlainHttpRegistries: false
+      secrets: 
+        default: 
+          auths:
+            "{{ .HarborCoreURL }}":
+              auth: "{{ .HarborAuth }}"
+  deployers:
+  - container
+  - helm
+  - mock
+image:
+  tag: "0.2.0-dev-89c8305937b649f93553bc59d3e935ce7a40913f"
+
