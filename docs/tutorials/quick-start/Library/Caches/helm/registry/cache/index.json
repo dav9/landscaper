@@ -1,1 +1,0 @@
-{"schemaVersion":2,"manifests":[{"mediaType":"application/vnd.oci.image.manifest.v1+json","digest":"sha256:67e2d43f549ceea57b6a18a78245384d08c3e47fd3e8b968c1a29601dbff053d","size":323,"annotations":{"org.opencontainers.image.ref.name":"h.ingress.t.cp-k8s.shoot.canary.k8s-hana.ondemand.com/library/charts/ingress-nginx:0.0.1"}}]}

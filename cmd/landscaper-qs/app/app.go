@@ -15,13 +15,6 @@ import (
 	"github.com/gardener/landscaper/pkg/logger"
 	"github.com/gardener/landscaper/pkg/version"
 
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/clientcmd"
-
-	"k8s.io/apimachinery/pkg/runtime/schema"
-	"k8s.io/kubectl/pkg/scheme"
-
 	"helm.sh/helm/v3/pkg/action"
 
 	"helm.sh/helm/v3/pkg/cli"
@@ -30,14 +23,11 @@ import (
 )
 
 type qsOptions struct {
+	workDir string
 	kubeconfig string
 	template string
 
 	kubeconfigData string
-
-	clientset *kubernetes.Clientset
-
-	restclient *rest.RESTClient
 
 	settings *cli.EnvSettings
 	actionConfig *action.Configuration
@@ -90,25 +80,8 @@ func NewLandscaperQSCommand(ctx context.Context) (*cobra.Command, error) {
 	return cmd, nil
 }
 
-func (o *qsOptions) Load() error {
-	config, err := clientcmd.BuildConfigFromFlags("", o.kubeconfig)
-	if err != nil {
-		return err
-	}
-
-	config.GroupVersion = &schema.GroupVersion{Group: "", Version: "v1"}
-
-	if config.APIPath == "" {
-		config.APIPath = "/api"
-	}
-
-	o.clientset, err = kubernetes.NewForConfig(config)
-	if err != nil {
-		return err
-	}
-	config.NegotiatedSerializer = scheme.Codecs.WithoutConversion()
-
-	o.restclient, err = rest.RESTClientFor(config)
+func (o *qsOptions) Load() (err error) {
+	o.workDir, err = os.Getwd()
 	if err != nil {
 		return err
 	}
@@ -130,7 +103,9 @@ func (o *qsOptions) Load() error {
 		"ls-system", os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
         return err
 	}
-	u, err := url.Parse(config.Host)
+
+	//config.Host
+	u, err := url.Parse("https://api.a.cp-k8s.shoot.canary.k8s-hana.ondemand.com")
 	
 	o.domain = u.Host[4:]
 

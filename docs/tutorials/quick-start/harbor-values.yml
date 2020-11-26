@@ -1,0 +1,24 @@
+# values.yaml
+
+externalURL: https://h.ingress.a.cp-k8s.shoot.canary.k8s-hana.ondemand.com
+
+chartmuseum:
+  enabled: false
+clair:
+  enabled: false
+trivy:
+  enabled: false
+notary:
+  enabled: false
+expose:
+  tls:
+    certSource: secret
+    secret: 
+      secretName: harbor-tls-secret
+  ingress:
+    annotations: 
+      dns.gardener.cloud/class: garden
+      dns.gardener.cloud/dnsnames: h.ingress.a.cp-k8s.shoot.canary.k8s-hana.ondemand.com
+      cert.gardener.cloud/purpose: managed
+    hosts:
+      core: h.ingress.a.cp-k8s.shoot.canary.k8s-hana.ondemand.com
