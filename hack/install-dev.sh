@@ -13,7 +13,6 @@ if [[ $EFFECTIVE_VERSION == "" ]]; then
   EFFECTIVE_VERSION=$(cat $PROJECT_ROOT/VERSION)
 fi
 
-# -mod=vendor
 CGO_ENABLED=0 GO111MODULE=on \
   go install -mod=vendor \
   -ldflags "-X github.com/gardener/landscaper/pkg/version.gitVersion=$EFFECTIVE_VERSION \

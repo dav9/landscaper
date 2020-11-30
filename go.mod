@@ -42,6 +42,7 @@ require (
 	golang.org/x/tools v0.0.0-20201002184944-ecd9fd270d5d // indirect
 	gomodules.xyz/jsonpatch/v2 v2.1.0 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
+	gopkg.in/yaml.v2 v2.3.0
 	helm.sh/helm/v3 v3.2.4
 	k8s.io/api v0.18.2
 	k8s.io/apimachinery v0.18.6
